@@ -18,6 +18,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # ================================
 # NVM (single clean load)
@@ -57,28 +58,74 @@ eval "$(oh-my-posh init zsh --config "$HOME/.poshthemes/arch.omp.json")"
 # Git helper function
 # ================================
 gcap() {
+    # ----- Colors -----
+    local blue red green yellow reset
     blue=$(tput setaf 4)
     red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    yellow=$(tput setaf 3)
     reset=$(tput sgr0)
 
-    if [[ -z "$1" ]]; then
-        echo ""
-        echo "${red}[+] Provide the commit message${reset}"
-        echo ""
+    # ----- Git sanity check -----
+    if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+        echo "${red}[✗] Not inside a git repository${reset}"
         return 1
     fi
 
+    # ----- Message check -----
+    if [[ -z "$1" ]]; then
+        echo "${red}[✗] Commit message required${reset}"
+        echo "Usage: gcap \"message\""
+        return 1
+    fi
+
+    # ----- Branch detection -----
+    local branch
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+    if [[ -z "$branch" ]]; then
+        echo "${red}[✗] Detached HEAD state${reset}"
+        return 1
+    fi
+
+    # ----- Show status before doing anything -----
     echo ""
+    echo "${yellow}[i] Current status:${reset}"
+    git status --short
+    echo ""
+
+    # ----- Stage changes -----
     echo "${blue}[+] Staging changes...${reset}"
     git add .
 
-    echo ""
-    echo "${blue}[+] Committing...${reset}"
-    git commit -m "$1 — $(date '+%Y-%m-%d %H:%M:%S')"
+    # ----- Check if anything was staged -----
+    if git diff --cached --quiet; then
+        echo "${yellow}[!] No changes to commit${reset}"
+        return 0
+    fi
+
+    # ----- Commit -----
+    local timestamp
+    timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+
+    echo "${blue}[+] Committing on '${branch}'...${reset}"
+    git commit -m "$1 — $timestamp" || {
+        echo "${red}[✗] Commit failed${reset}"
+        return 1
+    }
+
+    # ----- Push (with upstream auto-fix) -----
+    echo "${blue}[+] Pushing to origin/${branch}...${reset}"
+    if ! git push; then
+        echo "${yellow}[!] No upstream found. Setting upstream...${reset}"
+        git push -u origin "$branch" || {
+            echo "${red}[✗] Push failed${reset}"
+            return 1
+        }
+    fi
 
     echo ""
-    echo "${blue}[+] Pushing...${reset}"
-    git push
+    echo "${green}[✓] Done. Clean push on '${branch}'.${reset}"
 }
 
 # ================================
