@@ -1,0 +1,57 @@
+@import "colors.css";
+
+* {
+  font-family: "0xProto Nerd Font";
+  font-size: 20px;
+}
+
+window {
+  background-color: rgba(14, 21, 20, 0.90);
+  border-radius: 12px;
+  border: 2px solid @accent;
+}
+
+#outer-box {
+  padding: 12px;
+}
+
+#input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: @surface;
+  color: @text;
+}
+
+#input:focus {
+  border: 2px solid @accent;
+}
+
+#inner-box {
+  spacing: 6px;
+}
+
+#entry {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: @text;
+}
+
+#entry:selected {
+  background-color: @accent;
+  color: @accent-text;
+}
+
+#entry:selected #text {
+  color: @accent-text;
+}
+
+#text {
+  color: @text;
+}
+
+#img {
+  margin-right: 8px;
+}
+

@@ -1,0 +1,72 @@
+/* Import Matugen colors */
+@import './colors.css';
+
+/* Reset */
+* {
+  all: unset;
+}
+
+/* Window */
+window {
+  background-color: alpha(@scrim, 0.4);
+}
+
+/* Buttons */
+button {
+  background-color: @surface_container;
+  color: @on_surface;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 12px;
+
+  background-repeat: no-repeat;
+  background-position: center 30%;
+  background-size: 28%;
+
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+button:hover {
+  background-color: @surface_container_high;
+}
+
+/* Focus (keyboard nav) */
+button:focus {
+  background-color: @primary_container;
+  color: @on_primary_container;
+}
+
+/* Label text */
+button label {
+  margin-top: 64px;
+  font-size: 14px;
+  color: inherit;
+}
+
+/* ================= ICONS ================= */
+
+/* Dark theme → use WHITE icons */
+#lock {
+  background-image: url("/home/jellybean/.config/wlogout/icons/lock_white.png");
+}
+
+#logout {
+  background-image: url("/home/jellybean/.config/wlogout/icons/logout_white.png");
+}
+
+#suspend {
+  background-image: url("/home/jellybean/.config/wlogout/icons/suspend_white.png");
+}
+
+#shutdown {
+  background-image: url("/home/jellybean/.config/wlogout/icons/shutdown_white.png");
+}
+
+#hibernate {
+  background-image: url("/home/jellybean/.config/wlogout/icons/hibernate_white.png");
+}
+
+#reboot {
+  background-image: url("/home/jellybean/.config/wlogout/icons/reboot_white.png");
+}

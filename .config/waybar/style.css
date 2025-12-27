@@ -1,0 +1,105 @@
+@import "colors.css";
+ * {
+     border: none;
+     border-radius: 16px;
+     font-family: "0xProto Nerd Font";
+     font-size: 17px;
+     min-height: 0;
+}
+ window#waybar {
+     background: @background;
+     color: @on_surface;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+/* Modules */
+ #workspaces, 
+ #window, 
+ #clock, 
+ #network, 
+ #pulseaudio, 
+ #bluetooth, 
+ #battery, 
+ #tray, 
+ #custom-menu {
+     padding: 10px 12px;
+    /* margin: 6px 0;
+     */
+     transition: background 0.2s ease;
+}
+/* Hover */
+ #clock:hover, 
+ #network:hover, 
+ #pulseaudio:hover, 
+ #bluetooth:hover, 
+#battery:hover,
+#custom-cpu:hover,
+#custom-wlogout:hover {
+     background: @surface_container_high;
+}
+/* Workspaces */
+ #workspaces button {
+     padding: 0 10px;
+     color: @on_surface_variant;
+}
+ #workspaces button.active {
+     color: @primary;
+}
+ #workspaces button:hover {
+     color: @on_surface;
+}
+/* Window title */
+ #window {
+     color: @on_surface_variant;
+}
+/* Clock */
+ #clock {
+     color: @primary;
+     font-weight: bold;
+}
+/* Network */
+ #network {
+     color: @secondary;
+}
+/* Audio */
+ #pulseaudio {
+     color: @primary;
+}
+ #pulseaudio.muted {
+     color: @outline;
+}
+/* Bluetooth */
+ #bluetooth {
+     color: @secondary;
+}
+ #bluetooth.connected {
+     color: @primary;
+}
+/* Battery */
+ #battery {
+     color: @primary;
+}
+ #battery.warning {
+     color: @secondary;
+}
+ #battery.critical {
+     color: @error;
+}
+
+#custom-cpu{
+    color: @secondary
+}
+/* Tray */
+ #tray {
+     padding-right: 14px;
+}
+/* ================= POWER (WLOGOUT) ================= */
+ #custom-wlogout {
+    /* margin-left: 20;
+     */
+     color: @primary;
+     font-size: 18px;
+}
+ #custom-wlogout:hover {
+     color: @on_primary_container;
+}
+ 

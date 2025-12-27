@@ -1,0 +1,12 @@
+
+mode=drun
+show=drun
+prompt=Search…
+width=800
+height=600
+location=center
+allow_markup=true
+image_size=32
+columns=1
+matching=fuzzy
+term=kitty
