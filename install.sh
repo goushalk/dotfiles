@@ -42,7 +42,15 @@ sudo pacman -S --noconfirm --needed \
   qt6-wayland \
   rust \
   cargo \
-  ttf-0xproto-nerd
+  ttf-0xproto-nerd \
+  eza \
+  libnotify \
+  zsh \
+  nvim \
+  unzip \
+  git \
+  curl \
+  wget
 
 # ---- Install yay if missing ----
 if ! command -v yay &>/dev/null; then
