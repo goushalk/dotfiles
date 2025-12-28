@@ -148,7 +148,7 @@ fc-cache -fv
 # -------------------- Set default shell --------------------
 if [ "$SHELL" != "/bin/zsh" ]; then
   echo "==> Setting zsh as default shell"
-  chsh -s /bin/zsh
+  chsh -s usr/bin/zsh
 fi
 
 # -------------------- Done --------------------
