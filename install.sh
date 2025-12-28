@@ -67,7 +67,11 @@ sudo pacman -S --noconfirm --needed \
   git \
   curl \
   wget \
-  stow
+  stow \
+  hyprpicker \
+  gum \
+  wiremix \
+  btop
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
@@ -146,9 +150,9 @@ echo "==> Updating font cache"
 fc-cache -fv
 
 # -------------------- Set default shell --------------------
-if [ "$SHELL" != "/bin/zsh" ]; then
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
   echo "==> Setting zsh as default shell"
-  chsh -s usr/bin/zsh
+  chsh -s /usr/bin/zsh
 fi
 
 # -------------------- Done --------------------
