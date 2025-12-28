@@ -116,12 +116,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# -------------------- Set default shell --------------------
-if [ "$SHELL" != "/bin/zsh" ]; then
-  echo "==> Setting zsh as default shell"
-  chsh -s /bin/zsh
-fi
-
 # -------------------- Clone dotfiles --------------------
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "==> Cloning dotfiles repository"
@@ -150,6 +144,12 @@ fi
 # -------------------- Font cache --------------------
 echo "==> Updating font cache"
 fc-cache -fv
+
+# -------------------- Set default shell --------------------
+if [ "$SHELL" != "/bin/zsh" ]; then
+  echo "==> Setting zsh as default shell"
+  chsh -s /bin/zsh
+fi
 
 # -------------------- Done --------------------
 echo
