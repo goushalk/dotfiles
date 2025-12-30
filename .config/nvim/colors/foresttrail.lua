@@ -8,7 +8,7 @@ local hl = vim.api.nvim_set_hl
 hl(0, "Normal", { bg = "none" })
 hl(0, "NormalFloat", { bg = "none" })
 hl(0, "SignColumn", { bg = "none" })
-hl(0, "Comment", { fg = "#7a8f88", italic = true })
+hl(0, "Comment", { fg = "#bbf2bd", italic = true })
 hl(0, "LineNr", { fg = "#3f5f55" })
 hl(0, "CursorLineNr", { fg = "#c7b38c", bold = true })
 

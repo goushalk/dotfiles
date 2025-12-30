@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "./colors.css";
 
 * {
   font-family: "0xProto Nerd Font";
@@ -6,9 +6,9 @@
 }
 
 window {
-  background-color: rgba(14, 21, 20, 0.90);
+  background-color: @define-color on_surface;
   border-radius: 12px;
-  border: 2px solid @accent;
+  border: 2px solid @on_secondary_container;
 }
 
 #outer-box {
@@ -19,7 +19,7 @@ window {
   margin-bottom: 10px;
   padding: 8px;
   border-radius: 8px;
-  background-color: @surface;
+  background-color: @define-color on_surface;
   color: @text;
 }
 

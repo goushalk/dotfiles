@@ -128,6 +128,7 @@ gcap() {
     echo "${green}[✓] Done. Clean push on '${branch}'.${reset}"
 }
 
+
 # ================================
 # Zinit (plugin manager)
 # ================================
