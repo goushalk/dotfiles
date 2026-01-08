@@ -4,12 +4,12 @@
   "height": 36,
   "spacing": 8,
 
-  "margin-top": 5,
-  "margin-left": 10,
-  "margin-right": 10,
+  // "margin-top": 5,
+  // "margin-left": 10,
+  // "margin-right": 10,
 
   "modules-left": [
-    "custom/menu",
+    "custom/chromaboard",
     "hyprland/workspaces",
     "hyprland/window"
 
@@ -85,10 +85,10 @@
     }
   },
 
-  "custom/menu":{
-      "format": " ",
-      "tooltip": "lapis-menu",
-      "on-click": "kitty --class float-tui -e ~/.config/hypr/scripts/waybar/lapis-menu"
+  "custom/chromaboard":{
+      "format": "  ",
+      "tooltip": "chromaboard My Todo",
+      "on-click": "kitty --class chromaboard -e chromaboard"
   },
 
   "tray": {

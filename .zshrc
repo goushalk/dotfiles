@@ -2,7 +2,7 @@
 # Oh My Zsh
 # ================================
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="af-magic"
 
 plugins=(
   git
@@ -52,7 +52,7 @@ alias tsm='sesh connect $(sesh list -i | gum choose)'
 # ================================
 # Prompt (oh-my-posh)
 # ================================
-eval "$(oh-my-posh init zsh --config "$HOME/.poshthemes/arch.omp.json")"
+# eval "$(oh-my-posh init zsh --config "$HOME/.poshthemes/arch.omp.json")"
 
 # ================================
 # Git helper function
