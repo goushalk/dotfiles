@@ -48,25 +48,25 @@ button label {
 
 /* Dark theme → use WHITE icons */
 #lock {
-  background-image: url("/home/jellybean/.config/wlogout/icons/lock_white.png");
+  background-image: url("./icons/lock_white.png");
 }
 
 #logout {
-  background-image: url("/home/jellybean/.config/wlogout/icons/logout_white.png");
+  background-image: url("./icons/logout_white.png");
 }
 
 #suspend {
-  background-image: url("/home/jellybean/.config/wlogout/icons/suspend_white.png");
+  background-image: url("./icons/suspend_white.png");
 }
 
 #shutdown {
-  background-image: url("/home/jellybean/.config/wlogout/icons/shutdown_white.png");
+  background-image: url("./icons/shutdown_white.png");
 }
 
 #hibernate {
-  background-image: url("/home/jellybean/.config/wlogout/icons/hibernate_white.png");
+  background-image: url("./icons/hibernate_white.png");
 }
 
 #reboot {
-  background-image: url("/home/jellybean/.config/wlogout/icons/reboot_white.png");
+  background-image: url("./icons/reboot_white.png");
 }

@@ -6,7 +6,7 @@
 }
 
 window {
-  background-color: @define-color on_surface;
+  background-color: @define-color backgoround;
   border-radius: 12px;
   border: 2px solid @on_secondary_container;
 }
