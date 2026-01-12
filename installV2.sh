@@ -88,7 +88,8 @@ sudo pacman -S --noconfirm --needed \
   gum \
   wiremix \
   btop \
-  socat
+  socat \
+  nautilus
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
