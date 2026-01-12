@@ -71,7 +71,8 @@ sudo pacman -S --noconfirm --needed \
   hyprpicker \
   gum \
   wiremix \
-  btop
+  btop \
+  socat
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
@@ -93,7 +94,7 @@ yay -S $YAY_FLAGS \
   mpvpaper \
   impala \
   bluetui \
-  oh-my-posh
+  python-pywalfox
 
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
@@ -148,12 +149,6 @@ fi
 # -------------------- Font cache --------------------
 echo "==> Updating font cache"
 fc-cache -fv
-
-# -------------------- Set default shell --------------------
-if [ "$SHELL" != "/usr/bin/zsh" ]; then
-  echo "==> Setting zsh as default shell"
-  chsh -s /usr/bin/zsh
-fi
 
 # -------------------- Done --------------------
 echo
