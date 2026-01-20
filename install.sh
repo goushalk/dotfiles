@@ -107,10 +107,7 @@ for dir in "${CONFIG_DIRS[@]}"; do
   fi
 done
 
-if [ -f "$HOME/.zshrc" ]; then
-  echo "  -> ~/.zshrc"
-  mv "$HOME/.zshrc" "$BACKUP_DIR/"
-fi
+
 
 # -------------------- Oh My Zsh --------------------
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -129,6 +126,7 @@ else
   echo "==> Dotfiles repo already exists, skipping clone"
 fi
 
+
 # -------------------- Stow dotfiles --------------------
 echo "==> Stowing dotfiles"
 cd "$DOTFILES_DIR"
@@ -141,9 +139,12 @@ if ! grep -q "oh-my-posh init zsh" "$ZSHRC" 2>/dev/null; then
   echo "==> Enabling Oh My Posh"
   cat <<'EOF' >>"$ZSHRC"
 
-# ---- Oh My Posh ----
-eval "$(oh-my-posh init zsh)"
-EOF
+
+# -------------------- .zsh backup --------------------
+
+if [ -f "$HOME/.zshrc" ]; then
+  echo "  -> ~/.zshrc"
+  mv "$HOME/.zshrc" "$BACKUP_DIR/"
 fi
 
 # -------------------- Font cache --------------------
