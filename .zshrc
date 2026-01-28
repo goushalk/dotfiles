@@ -31,20 +31,18 @@ export NVM_DIR="$HOME/.nvm"
 # Aliases
 # ================================
 alias c='clear'
-alias v='nvim'
 
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
-
+alias gitauth='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github'
 alias ls='eza --icons=always'
 alias ll='eza -al --icons=always'
 alias lt='eza -a --tree --level=1 --icons=always'
 
 alias shutdown='systemctl poweroff'
 
-# Optional app alias (portable)
-alias TL='java -jar "$HOME/software/TLauncher.jar"'
+alias v='$HOME/softwares/nvim-linux-x86_64.appimage'
 
 # tmux / sesh helper
 alias tsm='sesh connect $(sesh list -i | gum choose)'
@@ -153,3 +151,5 @@ autoload -U compinit && compinit
 # ================================
 # Create ~/.zshrc.local for private stuff
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+

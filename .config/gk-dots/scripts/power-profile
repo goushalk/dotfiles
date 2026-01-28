@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+############################
+# CONFIG
+############################
+WOFI_CMD="wofi --dmenu --prompt 'Power Profile'"
+NOTIFY_CMD="notify-send"
+
+############################
+# SANITY
+############################
+command -v powerprofilesctl >/dev/null || {
+  echo "ERROR: powerprofilesctl not found" >&2
+  exit 1
+}
+
+command -v wofi >/dev/null || {
+  echo "ERROR: wofi not installed" >&2
+  exit 1
+}
+
+############################
+# MENU (HARDCODED, SAFE)
+############################
+selection="$(
+  printf "%s\n" \
+    "power-saver" \
+    "balanced" \
+    "performance" \
+  | eval "$WOFI_CMD"
+)"
+
+[[ -z "${selection:-}" ]] && exit 0
+
+############################
+# APPLY
+############################
+powerprofilesctl set "$selection"
+
+############################
+# NOTIFY
+############################
+if command -v notify-send >/dev/null; then
+  notify-send "Power Profile" "Switched to: $selection"
+fi

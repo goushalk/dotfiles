@@ -24,8 +24,13 @@ vim.pack.add({
 	{src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{src = "https://github.com/rebelot/kanagawa.nvim" },
 	{src = "https://github.com/xiyaowong/transparent.nvim"},
-
+	{src = "https://github.com/MeanderingProgrammer/render-markdown.nvim"},
+	{src = "https://github.com/dhruvasagar/vim-table-mode"},
+    {src = "https://github.com/kamykn/spelunker.vim"},
 })
+
+-- System clipboard (Wayland)
+vim.opt.clipboard = "unnamedplus"
 
 
 -- Telescope keybinds --

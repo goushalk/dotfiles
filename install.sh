@@ -72,7 +72,8 @@ sudo pacman -S --noconfirm --needed \
   gum \
   wiremix \
   btop \
-  socat
+  socat \
+  tmux
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
@@ -94,7 +95,8 @@ yay -S $YAY_FLAGS \
   mpvpaper \
   impala \
   bluetui \
-  python-pywalfox
+  python-pywalfox \
+  swaylock-effects
 
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
