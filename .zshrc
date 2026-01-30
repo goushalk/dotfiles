@@ -19,6 +19,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export VISUAL=vim
 export EDITOR="$VISUAL"
 # ================================
 # NVM (single clean load)
