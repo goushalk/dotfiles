@@ -9,7 +9,6 @@
   // "margin-right": 10,
 
   "modules-left": [
-    "custom/chromaboard",
     "hyprland/workspaces",
     "hyprland/window"
 
@@ -85,11 +84,6 @@
     }
   },
 
-  "custom/chromaboard":{
-      "format": "  ",
-      "tooltip": "chromaboard My Todo",
-      "on-click": "kitty --class chromaboard -e chromaboard"
-  },
 
   "tray": {
     "spacing": 8
