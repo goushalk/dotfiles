@@ -75,15 +75,15 @@
     "tooltip": false
   },
 
-  "battery": {
-    "format": " {capacity}%",
-    "format-charging": " {capacity}%",
-    "states": {
-      "warning": 30,
-      "critical": 15
-    }
-  },
-
+"battery": {
+  "format": "{icon} {capacity}%",
+  "format-charging": " {capacity}%",
+  "format-icons": ["", "", "", "", ""],
+  "states": {
+    "warning": 30,
+    "critical": 15
+  }
+},
 
 
   "tray": {
