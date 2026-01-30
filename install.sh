@@ -43,6 +43,7 @@ sudo pacman -S --noconfirm --needed \
   hyprland \
   waybar \
   wofi \
+  swaylock \
   swaybg \
   dunst \
   mpv \
@@ -95,8 +96,8 @@ yay -S $YAY_FLAGS \
   impala \
   bluetui \
   python-pywalfox \
-  swaylock-effects \
-  zen-browser-bin
+  swaylock-effects
+
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
 mkdir -p "$BACKUP_DIR"
