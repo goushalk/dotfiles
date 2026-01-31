@@ -43,7 +43,6 @@ sudo pacman -S --noconfirm --needed \
   hyprland \
   waybar \
   wofi \
-  swaylock \
   swaybg \
   dunst \
   mpv \
