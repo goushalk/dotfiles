@@ -67,20 +67,11 @@ Make sure you have the compositor and tools appropriate for your distro and setu
 1. Backup existing Hyprland config (if any):
    - mv ~/.config/hypr ~/.config/hypr.bak
 
-2. Clone this repository:
-   - git clone https://github.com/goushalk/dotfiles.git ~/dotfiles
+2. runthis command:
+   `curl -fSsl https://raw.githubusercontent.com/goushalk/dotfiles/refs/heads/main/install.sh | bash`
 
-3. Install or link configuration:
-   - Option A — symlink the config directories you want to use:
-     - ln -s ~/dotfiles/hypr ~/.config/hypr
-     - ln -s ~/dotfiles/waybar ~/.config/waybar
-   - Option B — copy files directly:
-     - cp -r ~/dotfiles/hypr ~/.config/hypr
+4. reboot:
 
-4. Start or reload Hyprland:
-   - Log out and start a new Hyprland session, or reload Hyprland with the configured keybinding (or via a script included in `scripts/`).
-
-If this repo includes an `install` or `setup` script, you can run it — inspect the script before running and adapt to your paths.
 
 ---
 
@@ -90,19 +81,6 @@ If this repo includes an `install` or `setup` script, you can run it — inspect
 - Edit configuration: open the relevant file in `~/.config/hypr/` (e.g., `hyprland.conf`) and adjust keybindings, rules, and monitor layouts.
 - Update styles: modify CSS files under the bar folder (Waybar) and refresh the bar (often `pkill waybar` will restart it).
 - Wallpapers: point hyprpaper / swaybg to images in `themes/` or configure your preferred wallpaper manager.
-
----
-
-## Customization
-
-- Keybindings: change in `hyprland.conf` — take care to avoid collisions with your terminal or other apps.
-- Workspaces & layouts: rules and workspace assignments are in the main config — tweak for your monitor setup and preferred workspace behavior.
-- Colors & fonts: edit theme files (usually a `colors.css` or a config under `themes/`) to change look-and-feel.
-- Add or remove modules in your bar configuration (Waybar config + CSS) depending on what you want displayed.
-
-Pro tip: maintain a small set of modular includes for per-machine overrides (e.g., `hyprland.conf.d/` or conditional includes) so the repo is portable across machines.
-
----
 
 ## Troubleshooting
 
@@ -138,6 +116,6 @@ Personal dotfiles — see LICENSE (if present). If no license file exists, the r
 ---
 
 Thanks for checking out this config. If you'd like, I can:
-- add an installation script,
+
 - generate example screenshots and badges,
 - or tailor the README to list exact files present in the repository.
