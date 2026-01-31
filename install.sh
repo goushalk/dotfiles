@@ -111,7 +111,7 @@ export EDITOR=nvim
 export TERMINAL=kitty
 EOF
 
-chsh -s /bin/zsh
+rm -rf $HOME/.zshrc
 
 # -------------------- Stow dotfiles --------------------
 echo "==> Stowing dotfiles"
