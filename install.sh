@@ -72,7 +72,9 @@ sudo pacman -S --noconfirm --needed \
   wiremix \
   btop \
   socat \
-  tmux
+  tmux \
+  xdg-desktop-portal-hyprland \
+  hyprpolkitagent
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
@@ -95,7 +97,8 @@ yay -S $YAY_FLAGS \
   impala \
   bluetui \
   python-pywalfox \
-  swaylock-effects
+  swaylock-effects \
+  wl-clipboard 
 
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
