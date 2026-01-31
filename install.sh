@@ -60,7 +60,8 @@ sudo pacman -S --noconfirm --needed \
   brightnessctl \
   noto-fonts \
   noto-fonts-emoji \
-  ttf-jetbrains-mono
+  ttf-jetbrains-mono \
+  nautilus
 
 # -------------------- Enable services --------------------
 echo "==> Enabling services"
