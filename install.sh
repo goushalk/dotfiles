@@ -74,7 +74,8 @@ sudo pacman -S --noconfirm --needed \
   socat \
   tmux \
   xdg-desktop-portal-hyprland \
-  hyprpolkitagent
+  hyprpolkitagent \
+  hyprshot
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
@@ -98,8 +99,8 @@ yay -S $YAY_FLAGS \
   bluetui \
   python-pywalfox \
   swaylock-effects \
-  wl-clipboard 
-
+  wl-clipboard \
+  qt5-graphicaleffects
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
 mkdir -p "$BACKUP_DIR"
