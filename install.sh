@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+set -euo pipefail
 
 echo "==> Hyprland full system bootstrap"
 echo "==> Arch-based systems only"
@@ -13,147 +12,116 @@ if ! command -v pacman &>/dev/null; then
 fi
 
 if ! command -v sudo &>/dev/null; then
-  echo "[✗] sudo is required."
+  echo "[✗] sudo not found."
   exit 1
 fi
 
-# -------------------- Variables --------------------
-DOTFILES_REPO="https://github.com/goushalk/dotfiles.git"
-DOTFILES_DIR="$HOME/dotfiles"
-BACKUP_DIR="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
-
-CONFIG_DIRS=(
-  hypr
-  waybar
-  wofi
-  wlogout
-  dunst
-  swaylock
-  waypaper
-  mpvpaper
-)
-
-# -------------------- System update --------------------
-echo "==> Updating system"
-sudo pacman -Syu --noconfirm
-
-# -------------------- Core packages --------------------
-echo "==> Installing core packages"
-sudo pacman -S --noconfirm --needed \
-  hyprland \
-  waybar \
-  wofi \
-  swaybg \
-  dunst \
-  mpv \
-  wl-clipboard \
-  grim \
-  slurp \
-  brightnessctl \
-  pamixer \
-  playerctl \
-  xdg-desktop-portal-hyprland \
-  qt5-wayland \
-  qt6-wayland \
-  rust \
-  cargo \
-  ttf-0xproto-nerd \
-  eza \
-  libnotify \
-  zsh \
-  neovim \
-  unzip \
-  git \
-  curl \
-  wget \
-  stow \
-  hyprpicker \
-  gum \
-  wiremix \
-  btop \
-  socat \
-  tmux
-
-# -------------------- Install yay --------------------
-if ! command -v yay &>/dev/null; then
-  echo "==> Installing yay"
-  sudo pacman -S --noconfirm --needed git base-devel
-  git clone https://aur.archlinux.org/yay.git /tmp/yay
-  (cd /tmp/yay && makepkg -si --noconfirm)
-  rm -rf /tmp/yay
-fi
-
-YAY_FLAGS="--noconfirm --needed --answerclean All --answerdiff None --removemake"
-
-# -------------------- AUR packages --------------------
-echo "==> Installing AUR packages"
-yay -S $YAY_FLAGS \
-  matugen-bin \
-  wlogout \
-  waypaper \
-  mpvpaper \
-  impala \
-  bluetui \
-  python-pywalfox \
-  swaylock-effects
+# -------------------- Vars --------------------
+BACKUP_DIR="$HOME/.dotfiles-backup-$(date +%F-%H%M%S)"
+ZSHRC="$HOME/.zshrc"
 
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
 mkdir -p "$BACKUP_DIR"
 
-for dir in "${CONFIG_DIRS[@]}"; do
+for dir in hypr waybar wofi kitty nvim; do
   if [ -d "$HOME/.config/$dir" ]; then
-    echo "  -> ~/.config/$dir"
     mv "$HOME/.config/$dir" "$BACKUP_DIR/"
   fi
 done
 
+if [ -f "$ZSHRC" ]; then
+  mv "$ZSHRC" "$BACKUP_DIR/"
+fi
 
+# -------------------- System update --------------------
+echo "==> Updating system"
+sudo pacman -Syu --noconfirm
+
+# -------------------- Base packages --------------------
+echo "==> Installing base packages"
+sudo pacman -S --noconfirm --needed \
+  git \
+  base-devel \
+  zsh \
+  stow \
+  hyprland \
+  waybar \
+  wofi \
+  kitty \
+  grim \
+  slurp \
+  wl-clipboard \
+  polkit-kde-agent \
+  pipewire \
+  wireplumber \
+  pavucontrol \
+  networkmanager \
+  brightnessctl \
+  noto-fonts \
+  noto-fonts-emoji \
+  ttf-jetbrains-mono
+
+# -------------------- Enable services --------------------
+echo "==> Enabling services"
+sudo systemctl enable NetworkManager.service
+
+# -------------------- AUR helper --------------------
+if ! command -v yay &>/dev/null; then
+  echo "==> Installing yay"
+  git clone https://aur.archlinux.org/yay.git /tmp/yay
+  (cd /tmp/yay && makepkg -si --noconfirm)
+  rm -rf /tmp/yay
+fi
+
+# -------------------- AUR packages --------------------
+echo "==> Installing AUR packages"
+yay -S --noconfirm --needed \
+  hyprpaper \
+  grimblast \
+  swayidle \
+  swaylock-effects \
+  waybar-module-pacman-updates \
+  wlogout
+
+# -------------------- Fonts cache --------------------
+echo "==> Refreshing font cache"
+fc-cache -fv
 
 # -------------------- Oh My Zsh --------------------
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "==> Installing Oh My Zsh"
-  export RUNZSH=no
-  export CHSH=no
-  export KEEP_ZSHRC=yes
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
+echo "==> Installing Oh My Zsh"
+export RUNZSH=no
+export CHSH=no
+export KEEP_ZSHRC=yes
 
-# -------------------- Clone dotfiles --------------------
-if [ ! -d "$DOTFILES_DIR" ]; then
-  echo "==> Cloning dotfiles repository"
-  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
-else
-  echo "==> Dotfiles repo already exists, skipping clone"
-fi
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# -------------------- Zsh config --------------------
+echo "==> Writing .zshrc"
+cat >"$ZSHRC" <<'EOF'
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
+plugins=(git sudo)
+
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR=nvim
+export TERMINAL=kitty
+EOF
+
+chsh -s /bin/zsh
 
 # -------------------- Stow dotfiles --------------------
 echo "==> Stowing dotfiles"
-cd "$DOTFILES_DIR"
-stow .
-
-# -------------------- Enable Oh My Posh (non-destructive) --------------------
-ZSHRC="$HOME/.zshrc"
-
-if ! grep -q "oh-my-posh init zsh" "$ZSHRC" 2>/dev/null; then
-  echo "==> Enabling Oh My Posh"
-  cat <<'EOF' >>"$ZSHRC"
-
-
-# -------------------- .zsh backup --------------------
-
-if [ -f "$HOME/.zshrc" ]; then
-  echo "  -> ~/.zshrc"
-  mv "$HOME/.zshrc" "$BACKUP_DIR/"
-fi
-
-# -------------------- Font cache --------------------
-echo "==> Updating font cache"
-fc-cache -fv
+stow hypr
+stow waybar
+stow wofi
+stow kitty
+stow nvim
 
 # -------------------- Done --------------------
 echo
-echo "==> Installation complete."
-echo "==> Backups stored in: $BACKUP_DIR"
-echo "==> Reboot recommended before starting Hyprland."
+echo "==> Install complete"
+echo "==> Backup saved at: $BACKUP_DIR"
+echo "==> Reboot recommended before starting Hyprland"
