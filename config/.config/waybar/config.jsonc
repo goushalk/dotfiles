@@ -80,8 +80,10 @@
 
 "battery": {
   "format": "{icon} {capacity}%",
-  "format-charging": " {capacity}%",
+  "format-charging": "󰢜 {capacity}%",
   "format-icons": ["", "", "", "", ""],
+  "exec": "~/.config/scripts/power-pofile-status",
+  "on-click": "~/.config/scripts/power-profile",
   "states": {
     "warning": 30,
     "critical": 15
