@@ -27,8 +27,8 @@ CONFIG_DIRS=(
   waybar
   wofi
   wlogout
-  dunst
   swaylock
+  swaync
   waypaper
   mpvpaper
 )
@@ -42,9 +42,7 @@ echo "==> Installing core packages"
 sudo pacman -S --noconfirm --needed \
   hyprland \
   waybar \
-  wofi \
   swaybg \
-  dunst \
   mpv \
   wl-clipboard \
   grim \
@@ -75,7 +73,8 @@ sudo pacman -S --noconfirm --needed \
   tmux \
   xdg-desktop-portal-hyprland \
   hyprpolkitagent \
-  hyprshot
+  hyprshot \
+  swaync \
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then
@@ -100,7 +99,9 @@ yay -S $YAY_FLAGS \
   python-pywalfox \
   swaylock-effects \
   wl-clipboard \
-  qt5-graphicaleffects
+  qt5-graphicaleffects \
+  fuzzel \
+  swayosd
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
 mkdir -p "$BACKUP_DIR"

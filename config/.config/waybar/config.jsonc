@@ -25,6 +25,7 @@
     "bluetooth",
     "pulseaudio",
     "battery",
+	"custom/notification"
   ],
 
   "hyprland/workspaces": {
@@ -63,7 +64,8 @@
     "format-disabled": " off",
     "format-connected": " {device_alias}",
     "tooltip": true,
-    "on-click": "kitty --class float-tui -e bluetui"
+    "on-click": "kitty --class float-tui -e bluetui",
+	"max-length": 8
   },
 
   "pulseaudio": {
@@ -84,6 +86,18 @@
     "warning": 30,
     "critical": 15
   }
+},
+
+"custom/notification": {
+  "exec": "swaync-client -swb",
+  "return-type": "json",
+  "format": "{icon}",
+  "format-icons": {
+    "notification": "󱅫",
+    "none": ""
+  },
+  "on-click": "swaync-client -t",
+  "on-click-right": "swaync-client -C"
 },
 
 

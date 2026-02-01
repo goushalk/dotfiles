@@ -27,6 +27,7 @@ vim.pack.add({
 	{src = "https://github.com/MeanderingProgrammer/render-markdown.nvim"},
 	{src = "https://github.com/dhruvasagar/vim-table-mode"},
     {src = "https://github.com/kamykn/spelunker.vim"},
+	{src = "https://github.com/norcalli/nvim-colorizer.lua"},
 })
 
 -- System clipboard (Wayland)

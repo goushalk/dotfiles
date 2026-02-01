@@ -19,7 +19,8 @@
  #pulseaudio, 
  #bluetooth, 
  #battery, 
- #tray, 
+ #tray,
+ #custom-notification,
  #custom-menu {
      padding: 10px 12px;
     /* margin: 6px 0;

@@ -1,0 +1,257 @@
+
+/* ================================
+   SwayNC Style
+   ================================ */
+
+/* ---- Color system (tonal surfaces) ---- */
+@define-color surface-0 #0f1115;
+@define-color surface-1 #141720;
+@define-color surface-2 #1a1f2e;
+
+@define-color outline #B3C3FF;
+
+@define-color primary #7e9cd8;
+@define-color secondary #98bb6c;
+@define-color error #e46876;
+
+@define-color text-primary #dcd7ba;
+@define-color text-muted #8a8f98;
+
+/* ---- Global reset ---- */
+* {
+  font-family: "0xProto", monospace;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* ================================
+   Notifications
+   ================================ */
+
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification {
+  background: @surface-1;
+  border: 1px solid @outline;
+  margin: 6px 0;
+  padding: 6px;
+}
+
+.notification:hover {
+  background: @surface-2;
+}
+
+/* Close button */
+.close-button {
+  background: transparent;
+  border: 1px solid @error;
+  color: @error;
+  padding: 0;
+  margin-top: 5px;
+  margin-right: 5px;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.notification:hover .close-button {
+  opacity: 1;
+}
+
+.close-button:hover {
+  background: @error;
+  color: @surface-0;
+}
+
+/* Notification text */
+.summary {
+  font-size: 16px;
+  font-weight: 700;
+  color: @secondary;
+}
+
+.time {
+  font-size: 14px;
+  font-weight: 600;
+  color: @text-muted;
+  margin-right: 16px;
+}
+
+.body {
+  font-size: 15px;
+  font-weight: 400;
+  color: @text-primary;
+}
+
+/* Actions */
+.notification-action {
+  border: 1px solid @outline;
+}
+
+.notification-action > button {
+  background: @surface-0;
+  color: @text-primary;
+  border-radius: 0;
+}
+
+.notification-action > button:hover {
+  background: @primary;
+  color: @surface-0;
+}
+
+/* Inline reply */
+.inline-reply-entry {
+  background: @surface-2;
+  color: @text-primary;
+  caret-color: @text-primary;
+  border: 1px solid @outline;
+}
+
+.inline-reply-button {
+  margin-top: 4px;
+  margin-left: 4px;
+  background: @surface-1;
+  border: 1px solid @outline;
+  color: @text-primary;
+}
+
+.inline-reply-button:hover {
+  background: @primary;
+  color: @surface-0;
+}
+
+.inline-reply-button:disabled {
+  background: transparent;
+  color: @text-muted;
+  border: 1px solid transparent;
+}
+
+/* ================================
+   Control Center
+   ================================ */
+
+.control-center {
+  background: @surface-0;
+  border: 1px solid @outline;
+}
+
+/* Title bar (Material app bar style) */
+.widget-title {
+  background: @surface-2;
+  color: @primary;
+  padding: 10px 12px;
+  margin: 8px;
+  border: 1px solid @outline;
+  font-size: 1.4rem;
+}
+
+.widget-title > button {
+  background: transparent;
+  border: 1px solid @outline;
+  color: @text-primary;
+  font-size: 1rem;
+}
+
+.widget-title > button:hover {
+  background: @primary;
+  color: @surface-0;
+}
+
+/* DND toggle */
+.widget-dnd {
+  background: @surface-1;
+  border: 1px solid @outline;
+  padding: 8px 12px;
+  margin: 8px;
+  font-size: large;
+  color: @primary;
+}
+
+.widget-dnd > switch {
+  background: @primary;
+  border-radius: 0;
+}
+
+.widget-dnd > switch:checked {
+  background: @error;
+  border: 1px solid @error;
+}
+
+/* Labels */
+.widget-label > label {
+  font-size: 1rem;
+  color: @text-primary;
+  margin: 10px;
+}
+
+/* ================================
+   Buttons Grid (Material tiles)
+   ================================ */
+
+.widget-buttons-grid {
+  background: @surface-1;
+  border: 1px solid @outline;
+  padding: 6px;
+  margin: 0 8px 8px 8px;
+  font-size: x-large;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: @surface-0;
+  border: 1px solid @outline;
+  color: @text-primary;
+  margin: 4px;
+  padding: 6px 24px;
+  transition: background-color 0.12s ease-in-out;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @primary;
+  color: @surface-0;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+  background: @secondary;
+  color: @surface-0;
+}
+
+/* ================================
+   Volume & Brightness
+   ================================ */
+
+.widget-volume,
+.widget-backlight {
+  background: @surface-1;
+  border: 1px solid @outline;
+  padding: 8px;
+  margin: 8px;
+  font-size: 2rem;
+  color: @primary;
+}
+
+/* ================================
+   MPRIS
+   ================================ */
+
+.widget-mpris {
+  background: @surface-1;
+  border: 1px solid @outline;
+  margin: 0 8px 8px 8px;
+  color: @text-primary;
+}
+
+.widget-mpris > box > button,
+.widget-mpris-player,
+.widget-mpris-album-art {
+  margin: 10px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+picture.mpris-background {
+  opacity: 0;
+}
