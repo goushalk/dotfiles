@@ -1,8 +1,9 @@
 # dotfiles — my Hyprland config
 
-Personal Hyprland configuration and related UI/utility files for a Wayland desktop setup.
+- Personal Hyprland configuration and related UI/utility files for a Wayland desktop setup.
+- I couldnt setup hotspot if any one knows anything about it then we can talk about it in [discussion](https://github.com/goushalk/dotfiles/discussions/1#discussioncomment-15663731)
 
-This repository contains my Hyprland configuration, status bar styles, scripts and small utilities I use to run a polished, keyboard-driven Wayland environment.
+
 
 ---
 
