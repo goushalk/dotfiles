@@ -55,7 +55,6 @@ All images live inside the `wallpapers/` directory.
 
 ### Gaming / Pop Culture
 
-![Evangelion](wallpapers/Evangelion.png)
 ![Knights_of_Sidonia](wallpapers/Knights-of-Sidonia.png)
 ![GTA](wallpapers/Game-GTA.png)
 ![Totoro](wallpapers/my-neighbor-totoro-sunflowers.png)
