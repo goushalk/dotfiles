@@ -67,7 +67,7 @@ Typical top-level structure (may vary):
 ## Installation
 
 1. Backup existing Hyprland config (if any):
-` mv ~/.config/hypr ~/.config/hypr.bak`
+` mv ~/.config ~/.config.bak`
 2. run this command:
 `curl -fSsl https://raw.githubusercontent.com/goushalk/dotfiles/refs/heads/main/install.sh | bash`
 3. reboot
