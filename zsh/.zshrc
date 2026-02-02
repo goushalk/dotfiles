@@ -40,13 +40,13 @@ alias gitauth='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github'
 alias ls='eza --icons=always'
 alias ll='eza -al --icons=always'
 alias lt='eza -a --tree --level=1 --icons=always'
-alias pacpick='yay -Slq | fzf --multi --preview 'yay -Si {}' --height=80% --reverse | xargs -r yay -S --needed --noconfirm'
+# alias pacpick='yay -Slq | fzf --multi --preview 'yay -Si {}' --height=80% --reverse | xargs -r yay -S --needed --noconfirm'
 alias shutdown='systemctl poweroff'
 
 alias v='$HOME/softwares/nvim-linux-x86_64.appimage'
 
 # tmux / sesh helper
-alias tsm='sesh connect $(sesh list -i | gum choose)'
+alias tsm='sesh connect $(sesh list -i -d | gum choose)'
 
 # ================================
 # Prompt (oh-my-posh)

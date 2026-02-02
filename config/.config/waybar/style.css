@@ -103,4 +103,10 @@
  #custom-wlogout:hover {
      color: @on_primary_container;
 }
+
+/* ================= Notification (swaync) ================= */
+#swaync {
+  padding: 10px 12px;
+  color: @primary;
+}
  

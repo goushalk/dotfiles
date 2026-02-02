@@ -16,7 +16,8 @@
 
   "modules-center": [
     "clock",
-    "tray"
+    "tray",
+    "custom/notification"
 
   ],
 
@@ -24,8 +25,7 @@
     "network",
     "bluetooth",
     "pulseaudio",
-    "battery",
-	"custom/notification"
+    "battery"
   ],
 
   "hyprland/workspaces": {
@@ -49,7 +49,7 @@
     "interval": 1,
     "format": " {:%H:%M}",
     "tooltip-format": "{:%A, %d %B %Y}"
-  },
+ },
 
   "network": {
     "format-wifi": "󰤨 {essid}",

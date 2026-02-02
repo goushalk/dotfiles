@@ -1,7 +1,7 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "ignore-gtk-theme": true,
-  "positionX": "right",
+  "positionX": "center",
   "positionY": "top",
   "control-center-margin-top": 10,
   "control-center-margin-bottom": 10,
@@ -31,7 +31,7 @@
   "widgets": ["title", "buttons-grid", "mpris"],
   "widget-config": {
     "title": {
-      "text": "Notification Center",
+      "text": "GOD'S EYE",
       "clear-all-button": true,
       "button-text": "󰆴 Clear All"
     },

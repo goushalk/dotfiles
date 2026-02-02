@@ -1,13 +1,28 @@
 /* =====================================
-   SwayNC 
+   SwayNC – Material You (Sharp)
+   Colors sourced from Matugen
    ===================================== */
 
-/* ---- Import live Matugen palette ---- */
+/* ---- Import Matugen palette ---- */
 @import "colors.css";
+
+/* ---- Material-style semantic mapping ---- */
+@define-color surface-0 @surface_container_lowest;
+@define-color surface-1 @surface_container;
+@define-color surface-2 @surface_container_high;
+
+@define-color outline-color @primary;
+
+@define-color primary-color @primary;
+@define-color secondary-color @secondary;
+@define-color error-color @error;
+
+@define-color text-primary @on_surface;
+@define-color text-muted @on_surface_variant;
 
 /* ---- Global reset ---- */
 * {
-  font-family: "0xProto", "0xProto Nerd Font", monospace;
+  font-family: "JetBrainsMono NFM SemiBold", monospace;
   border-radius: 0;
   box-shadow: none;
   text-shadow: none;
@@ -24,26 +39,26 @@
 }
 
 .notification {
-  background: @surface_container_low;
-  border: 1px solid @outline_variant;
+  background: @surface-1;
+  border: 1px solid @outline-color;
   margin: 6px 0;
   padding: 6px;
 }
 
 .notification:hover {
-  background: @surface_container_high;
+  background: @surface-2;
 }
 
 /* Close button */
 .close-button {
   background: transparent;
-  border: 1px solid @error;
-  color: @error;
+  border: 1px solid @error-color;
+  color: @error-color;
   padding: 0;
   margin-top: 5px;
   margin-right: 5px;
   opacity: 0;
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.12s ease-in-out;
 }
 
 .notification:hover .close-button {
@@ -51,69 +66,69 @@
 }
 
 .close-button:hover {
-  background: @error;
-  color: @on_error;
+  background: @error-color;
+  color: @surface-0;
 }
 
 /* Text */
 .summary {
   font-size: 16px;
   font-weight: 700;
-  color: @primary;
+  color: @secondary-color;
 }
 
 .time {
   font-size: 14px;
   font-weight: 600;
-  color: @on_surface_variant;
+  color: @text-muted;
   margin-right: 16px;
 }
 
 .body {
   font-size: 15px;
   font-weight: 400;
-  color: @on_surface;
+  color: @text-primary;
 }
 
 /* Actions */
 .notification-action {
-  border: 1px solid @outline_variant;
+  border: 1px solid @outline-color;
 }
 
 .notification-action > button {
-  background: @surface_container_lowest;
-  color: @on_surface;
+  background: @surface-0;
+  color: @text-primary;
 }
 
 .notification-action > button:hover {
-  background: @primary;
-  color: @on_primary;
+  background: @primary-color;
+  color: @surface-0;
 }
 
 /* Inline reply */
 .inline-reply-entry {
-  background: @surface_container;
-  color: @on_surface;
-  caret-color: @primary;
-  border: 1px solid @outline_variant;
+  background: @surface-2;
+  color: @text-primary;
+  caret-color: @text-primary;
+  border: 1px solid @outline-color;
 }
 
 .inline-reply-button {
   margin-top: 4px;
   margin-left: 4px;
-  background: @surface_container_low;
-  border: 1px solid @outline_variant;
-  color: @on_surface;
+  background: @surface-1;
+  border: 1px solid @outline-color;
+  color: @text-primary;
 }
 
 .inline-reply-button:hover {
-  background: @primary;
-  color: @on_primary;
+  background: @primary-color;
+  color: @surface-0;
 }
 
 .inline-reply-button:disabled {
   background: transparent;
-  color: @on_surface_variant;
+  color: @text-muted;
   border: 1px solid transparent;
 }
 
@@ -122,87 +137,87 @@
    ===================================== */
 
 .control-center {
-  background: @surface;
-  border: 1px solid @outline;
+  background: @surface-0;
+  border: 1px solid @outline-color;
 }
 
 /* Header / App bar */
 .widget-title {
-  background: @surface_container_highest;
-  color: @primary;
+  background: @surface-2;
+  color: @primary-color;
   padding: 10px 12px;
   margin: 8px;
-  border: 1px solid @outline_variant;
+  border: 1px solid @outline-color;
   font-size: 1.4rem;
 }
 
 .widget-title > button {
   background: transparent;
-  border: 1px solid @outline_variant;
-  color: @on_surface;
+  border: 1px solid @outline-color;
+  color: @text-primary;
   font-size: 1rem;
 }
 
 .widget-title > button:hover {
-  background: @primary;
-  color: @on_primary;
+  background: @primary-color;
+  color: @surface-0;
 }
 
 /* DND */
 .widget-dnd {
-  background: @surface_container;
-  border: 1px solid @outline_variant;
+  background: @surface-1;
+  border: 1px solid @outline-color;
   padding: 8px 12px;
   margin: 8px;
   font-size: large;
-  color: @primary;
+  color: @primary-color;
 }
 
 .widget-dnd > switch {
-  background: @primary;
+  background: @primary-color;
 }
 
 .widget-dnd > switch:checked {
-  background: @error;
-  border: 1px solid @error;
+  background: @error-color;
+  border: 1px solid @error-color;
 }
 
 /* Labels */
 .widget-label > label {
   font-size: 1rem;
-  color: @on_surface;
+  color: @text-primary;
   margin: 10px;
 }
 
 /* =====================================
-   Buttons Grid (RAW Material tiles)
+   Buttons Grid (Material tiles)
    ===================================== */
 
 .widget-buttons-grid {
-  background: @surface_container;
-  border: 1px solid @outline_variant;
+  background: @surface-1;
+  border: 1px solid @outline-color;
   padding: 6px;
   margin: 0 8px 8px 8px;
   font-size: x-large;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
-  background: @surface_container_lowest;
-  border: 1px solid @outline_variant;
-  color: @on_surface;
+  background: @surface-0;
+  border: 1px solid @outline-color;
+  color: @text-primary;
   margin: 4px;
   padding: 6px 24px;
-  transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.12s ease-in-out;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @secondary_container;
-  color: @on_secondary_container;
+  background: @primary-color;
+  color: @surface-0;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:checked {
-  background: @primary_container;
-  color: @on_primary_container;
+  background: @secondary-color;
+  color: @surface-0;
 }
 
 /* =====================================
@@ -211,12 +226,12 @@
 
 .widget-volume,
 .widget-backlight {
-  background: @surface_container;
-  border: 1px solid @outline_variant;
+  background: @surface-1;
+  border: 1px solid @outline-color;
   padding: 8px;
   margin: 8px;
   font-size: 2rem;
-  color: @primary;
+  color: @primary-color;
 }
 
 /* =====================================
@@ -224,10 +239,10 @@
    ===================================== */
 
 .widget-mpris {
-  background: @surface_container;
-  border: 1px solid @outline_variant;
+  background: @surface-1;
+  border: 1px solid @outline-color;
   margin: 0 8px 8px 8px;
-  color: @on_surface;
+  color: @text-primary;
 }
 
 .widget-mpris > box > button,

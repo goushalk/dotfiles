@@ -75,7 +75,8 @@ sudo pacman -S --noconfirm --needed \
   hyprpolkitagent \
   hyprshot \
   swaync \
-  power-profile-daemon
+  power-profiles-daemon \
+  nwg-displays
 
 # -------------------- Install yay --------------------
 if ! command -v yay &>/dev/null; then

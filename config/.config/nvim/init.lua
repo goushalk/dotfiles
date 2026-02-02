@@ -27,7 +27,7 @@ vim.pack.add({
 	{src = "https://github.com/MeanderingProgrammer/render-markdown.nvim"},
 	{src = "https://github.com/dhruvasagar/vim-table-mode"},
     {src = "https://github.com/kamykn/spelunker.vim"},
-	{src = "https://github.com/norcalli/nvim-colorizer.lua"},
+	{src = "https://github.com/chrisbra/Colorizer"},
 })
 
 -- System clipboard (Wayland)
@@ -60,7 +60,7 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = "none" })
 -- LSP servers --
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "pyright", "bashls", "gopls"}, -- auto install servers you want
+	ensure_installed = { "lua_ls", "pyright", "bashls", "gopls", "rust_analyzer"}, -- auto install servers you want
 	automatic_installation = true,
 })
 vim.lsp.enable({ "lua_ls", "pyright", "bashls", "gopls" })
