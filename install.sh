@@ -145,7 +145,7 @@ fi
 # -------------------- Stow dotfiles --------------------
 echo "==> Stowing dotfiles"
 cd "$DOTFILES_DIR"
-stow .
+stow */
 
 
 
