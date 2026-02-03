@@ -104,3 +104,13 @@ Personal dotfiles — see LICENSE (if present). If no license file exists, the r
 ---
 
 Thanks for checking out this config.
+
+> i am single
+> hi
+> bye
+
+`
+print("hello_world")
+`
+
+
