@@ -32,7 +32,7 @@ export NVM_DIR="$HOME/.nvm"
 # Aliases
 # ================================
 alias c='clear'
-
+alias rg='ripgrep'
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
