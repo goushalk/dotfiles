@@ -9,15 +9,16 @@
   // "margin-right": 10,
 
   "modules-left": [
+    "custom/notification",
     "hyprland/workspaces",
     "hyprland/window"
+
 
   ],
 
   "modules-center": [
     "clock",
-    "tray",
-    "custom/notification"
+    "tray"
 
   ],
 

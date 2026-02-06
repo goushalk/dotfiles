@@ -1,5 +1,5 @@
 /* =====================================
-   SwayNC – Material You (Sharp)
+   SwayNC – Material You (Sharp, Glass)
    Colors sourced from Matugen
    ===================================== */
 
@@ -20,12 +20,20 @@
 @define-color text-primary @on_surface;
 @define-color text-muted @on_surface_variant;
 
+/* ---- Glass surfaces ---- */
+/* Dark glass – adjust alpha if needed */
+
+@define-color glass-surface rgba(20, 20, 20, 0.70);
+@define-color glass-surface-hover rgba(20, 20, 20, 0.60);
+@define-color glass-button rgba(20, 20, 20, 0.70);
+
 /* ---- Global reset ---- */
 * {
   font-family: "JetBrainsMono NFM SemiBold", monospace;
   border-radius: 0;
   box-shadow: none;
   text-shadow: none;
+  background-color: transparent;
 }
 
 /* =====================================
@@ -39,19 +47,19 @@
 }
 
 .notification {
-  background: @surface-1;
+  background-color: @glass-surface;
   border: 1px solid @outline-color;
   margin: 6px 0;
   padding: 6px;
 }
 
 .notification:hover {
-  background: @surface-2;
+  background-color: @glass-surface-hover;
 }
 
 /* Close button */
 .close-button {
-  background: transparent;
+  background-color: transparent;
   border: 1px solid @error-color;
   color: @error-color;
   padding: 0;
@@ -66,7 +74,7 @@
 }
 
 .close-button:hover {
-  background: @error-color;
+  background-color: @error-color;
   color: @surface-0;
 }
 
@@ -96,18 +104,18 @@
 }
 
 .notification-action > button {
-  background: @surface-0;
+  background-color: @glass-button;
   color: @text-primary;
 }
 
 .notification-action > button:hover {
-  background: @primary-color;
+  background-color: @primary-color;
   color: @surface-0;
 }
 
 /* Inline reply */
 .inline-reply-entry {
-  background: @surface-2;
+  background-color: @glass-button;
   color: @text-primary;
   caret-color: @text-primary;
   border: 1px solid @outline-color;
@@ -116,18 +124,18 @@
 .inline-reply-button {
   margin-top: 4px;
   margin-left: 4px;
-  background: @surface-1;
+  background-color: @glass-button;
   border: 1px solid @outline-color;
   color: @text-primary;
 }
 
 .inline-reply-button:hover {
-  background: @primary-color;
+  background-color: @primary-color;
   color: @surface-0;
 }
 
 .inline-reply-button:disabled {
-  background: transparent;
+  background-color: transparent;
   color: @text-muted;
   border: 1px solid transparent;
 }
@@ -137,13 +145,13 @@
    ===================================== */
 
 .control-center {
-  background: @surface-0;
+  background-color: @glass-surface;
   border: 1px solid @outline-color;
 }
 
 /* Header / App bar */
 .widget-title {
-  background: @surface-2;
+  background-color: @glass-surface;
   color: @primary-color;
   padding: 10px 12px;
   margin: 8px;
@@ -152,20 +160,20 @@
 }
 
 .widget-title > button {
-  background: transparent;
+  background-color: @glass-button;
   border: 1px solid @outline-color;
   color: @text-primary;
   font-size: 1rem;
 }
 
 .widget-title > button:hover {
-  background: @primary-color;
+  background-color: @primary-color;
   color: @surface-0;
 }
 
 /* DND */
 .widget-dnd {
-  background: @surface-1;
+  background-color: @glass-surface;
   border: 1px solid @outline-color;
   padding: 8px 12px;
   margin: 8px;
@@ -174,11 +182,11 @@
 }
 
 .widget-dnd > switch {
-  background: @primary-color;
+  background-color: @primary-color;
 }
 
 .widget-dnd > switch:checked {
-  background: @error-color;
+  background-color: @error-color;
   border: 1px solid @error-color;
 }
 
@@ -194,7 +202,7 @@
    ===================================== */
 
 .widget-buttons-grid {
-  background: @surface-1;
+  background-color: @glass-surface;
   border: 1px solid @outline-color;
   padding: 6px;
   margin: 0 8px 8px 8px;
@@ -202,7 +210,7 @@
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
-  background: @surface-0;
+  background-color: @glass-button;
   border: 1px solid @outline-color;
   color: @text-primary;
   margin: 4px;
@@ -211,12 +219,12 @@
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @primary-color;
+  background-color: @primary-color;
   color: @surface-0;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:checked {
-  background: @secondary-color;
+  background-color: @secondary-color;
   color: @surface-0;
 }
 
@@ -226,7 +234,7 @@
 
 .widget-volume,
 .widget-backlight {
-  background: @surface-1;
+  background-color: @glass-surface;
   border: 1px solid @outline-color;
   padding: 8px;
   margin: 8px;
@@ -239,7 +247,7 @@
    ===================================== */
 
 .widget-mpris {
-  background: @surface-1;
+  background-color: @glass-surface;
   border: 1px solid @outline-color;
   margin: 0 8px 8px 8px;
   color: @text-primary;
