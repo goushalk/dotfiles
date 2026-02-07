@@ -1,62 +1,52 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 36,
-  "spacing": 8,
-
-  // "margin-top": 5,
-  // "margin-left": 10,
-  // "margin-right": 10,
+  "height": 34,
+  "spacing": 0,
 
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window"
-
   ],
 
   "modules-center": [
-    "clock",
-    "tray",
-    "custom/notification"
-
+    "clock"
   ],
 
   "modules-right": [
+    "custom/vpn",
     "network",
-    "bluetooth",
+	"bluetooth",
+    "custom/cpu",
     "pulseaudio",
-    "battery"
+    "battery",
+    "tray",
+    "custom/wlogout"
   ],
 
   "hyprland/workspaces": {
     "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "active": ""
-    },
-    "persistent-workspaces": {
-      "*": 5
-    }
+    "on-click": "activate",
+    "sort-by-name": true
   },
 
   "hyprland/window": {
-    "format": "󰣆 {}",
-    "max-length": 20,
-    "separate-outputs": true
+    "format": " {title}",
+    "max-length": 50
   },
 
   "clock": {
     "interval": 1,
-    "format": " {:%H:%M}",
-    "tooltip-format": "{:%A, %d %B %Y}"
- },
+    "format": "{:%Y-%m-%d %H:%M:%S Z}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+  },
 
   "network": {
-    "format-wifi": "󰤨 {essid}",
-    "format-ethernet": "󰈀 wired",
-    "format-disconnected": "󰤭 offline",
-    "tooltip": true,
-    "on-click": "kitty --class float-tui -e impala"
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀 ETH",
+    "format-disconnected": "󰖪 OFFLINE",
+	"on-click": "kitty --class float-tui -e impala",
+    "tooltip": true
   },
 
   "bluetooth": {
@@ -66,7 +56,7 @@
     "tooltip": true,
     "on-click": "kitty --class float-tui -e bluetui",
 	"max-length": 8
-  },
+},
 
   "pulseaudio": {
     "format": " {volume}%",
@@ -77,33 +67,35 @@
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
     "tooltip": false
   },
-
-"battery": {
-  "format": "{icon} {capacity}%",
-  "format-charging": "󰢜 {capacity}%",
-  "format-icons": ["", "", "", "", ""],
-  "exec": "~/.config/scripts/power-pofile-status",
-  "on-click": "~/.config/scripts/power-profile",
-  "states": {
-    "warning": 30,
-    "critical": 15
-  }
-},
-
-"custom/notification": {
-  "exec": "swaync-client -swb",
-  "return-type": "json",
-  "format": "{icon}",
-  "format-icons": {
-    "notification": "󱅫",
-    "none": ""
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+	"on-click": "~/.config/scripts/power-profile",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
   },
-  "on-click": "swaync-client -t",
-  "on-click-right": "swaync-client -C"
-},
-
 
   "tray": {
+    "icon-size": 16,
     "spacing": 8
+  },
+
+  "custom/cpu": {
+    "interval": 2,
+    "exec": "~/.config/waybar/scripts/cpu.sh",
+    "tooltip": false
+  },
+
+  "custom/vpn": {
+    "interval": 5,
+    "exec": "~/.config/waybar/scripts/vpn.sh",
+    "tooltip": true
+  },
+
+  "custom/wlogout": {
+    "format": "⏻",
+    "on-click": "wlogout"
   }
 }
