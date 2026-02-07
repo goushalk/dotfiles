@@ -9,7 +9,7 @@
 }
 
 window#waybar {
-    background: rgba(11,14,20,0.96);
+    background: rgba(40,40,40,0.96); /* bg */
     color: @on_surface;
     border-bottom: 4px solid @error_container;
 }
@@ -30,14 +30,14 @@ window#waybar {
     transition: all 0.15s ease;
 }
 
-/* HOVER = TACTICAL FEEDBACK */
+/* HOVER = TACTICAL FEEDBACK (Gruvbox style) */
 #clock:hover,
 #network:hover,
 #pulseaudio:hover,
 #battery:hover,
 #custom-cpu:hover,
 #custom-vpn:hover {
-    background: rgba(255,46,46,0.08);
+    background: alpha(@primary, 0.18);
 }
 
 /* WORKSPACES */
@@ -48,7 +48,7 @@ window#waybar {
 
 #workspaces button.active {
     color: @primary;
-    background: rgba(255,46,46,0.18);
+    background: alpha(@primary, 0.22);
 }
 
 #workspaces button:hover {
@@ -82,9 +82,9 @@ window#waybar {
     font-weight: bold;
 }
 
-/* VPN */
+/* VPN (Gruvbox aqua, not neon crime) */
 #custom-vpn {
-    color: #00ff9c;
+    color: @secondary_fixed;
     font-weight: bold;
 }
 
@@ -114,5 +114,5 @@ window#waybar {
 }
 
 #custom-wlogout:hover {
-    background: rgba(255,0,76,0.25);
+    background: alpha(@error, 0.25);
 }
