@@ -20,8 +20,8 @@
     "custom/cpu",
     "pulseaudio",
     "battery",
-    "tray",
-    "custom/wlogout"
+    "custom/wlogout",
+    "tray"
   ],
 
   "hyprland/workspaces": {
