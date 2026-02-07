@@ -1,24 +1,13 @@
 /* =====================================
-   SwayNC – Material You (Sharp)
-   Colors sourced from Matugen
+   SwayNC  
    ===================================== */
 
-/* ---- Import Matugen palette ---- */
 @import "colors.css";
 
-/* ---- Material-style semantic mapping ---- */
-@define-color surface-0 @surface_container_lowest;
-@define-color surface-1 @surface_container;
-@define-color surface-2 @surface_container_high;
-
-@define-color outline-color @primary;
-
-@define-color primary-color @primary;
-@define-color secondary-color @secondary;
-@define-color error-color @error;
-
-@define-color text-primary @on_surface;
-@define-color text-muted @on_surface_variant;
+/* ---- Gruvbox glass ---- */
+@define-color glass-bg rgba(40, 40, 40, 0.96);        /* bg */
+@define-color glass-bg-hover rgba(60, 56, 54, 0.96);  /* bg1 */
+@define-color glass-bg-alt rgba(50, 48, 47, 0.96);    /* bg2 */
 
 /* ---- Global reset ---- */
 * {
@@ -26,37 +15,39 @@
   border-radius: 0;
   box-shadow: none;
   text-shadow: none;
+  background-color: transparent;
 }
 
 /* =====================================
    Notifications
    ===================================== */
 
-.notification-row {
-  outline: none;
-  margin: 0;
-  padding: 0;
-}
-
 .notification {
-  background: @surface-1;
-  border: 1px solid @outline-color;
-  margin: 6px 0;
-  padding: 6px;
+  background-color: @glass-bg;
+  border: 2px solid @outline_variant;
+  border-left: 5px solid @primary_fixed;   /* BRIGHT BLUE */
+  margin: 8px 0;
+  padding: 10px;
 }
 
 .notification:hover {
-  background: @surface-2;
+  background-color: @glass-bg-hover;
+  border-left-color: @secondary_fixed;     /* AQUA on hover */
+}
+
+/* Critical */
+.notification.critical {
+  border-left-color: @error;               /* RED */
+  border-color: @error_container;
 }
 
 /* Close button */
 .close-button {
-  background: transparent;
-  border: 1px solid @error-color;
-  color: @error-color;
-  padding: 0;
-  margin-top: 5px;
-  margin-right: 5px;
+  background-color: transparent;
+  border: 2px solid @error;
+  color: @error;
+  margin-top: 6px;
+  margin-right: 6px;
   opacity: 0;
   transition: opacity 0.12s ease-in-out;
 }
@@ -66,70 +57,63 @@
 }
 
 .close-button:hover {
-  background: @error-color;
-  color: @surface-0;
+  background-color: @error;
+  color: @on_error_container;
 }
 
 /* Text */
 .summary {
   font-size: 16px;
   font-weight: 700;
-  color: @secondary-color;
+  color: @primary_fixed;
 }
 
 .time {
   font-size: 14px;
   font-weight: 600;
-  color: @text-muted;
+  color: @tertiary_fixed;
   margin-right: 16px;
 }
 
 .body {
   font-size: 15px;
   font-weight: 400;
-  color: @text-primary;
+  color: @on_surface;
 }
 
 /* Actions */
 .notification-action {
-  border: 1px solid @outline-color;
+  border: 2px solid @outline_variant;
+  box-shadow: inset 0 -3px 0 @secondary_fixed;
 }
 
 .notification-action > button {
-  background: @surface-0;
-  color: @text-primary;
+  background-color: @glass-bg-alt;
+  color: @on_surface;
 }
 
 .notification-action > button:hover {
-  background: @primary-color;
-  color: @surface-0;
+  background-color: @secondary_fixed;
+  color: @surface_container_lowest;
 }
 
 /* Inline reply */
 .inline-reply-entry {
-  background: @surface-2;
-  color: @text-primary;
-  caret-color: @text-primary;
-  border: 1px solid @outline-color;
+  background-color: @glass-bg-alt;
+  border: 2px solid @outline_variant;
+  color: @on_surface;
+  caret-color: @primary_fixed;
 }
 
 .inline-reply-button {
-  margin-top: 4px;
-  margin-left: 4px;
-  background: @surface-1;
-  border: 1px solid @outline-color;
-  color: @text-primary;
+  background-color: @glass-bg-alt;
+  border: 2px solid @outline_variant;
+  color: @primary_fixed;
 }
 
 .inline-reply-button:hover {
-  background: @primary-color;
-  color: @surface-0;
-}
-
-.inline-reply-button:disabled {
-  background: transparent;
-  color: @text-muted;
-  border: 1px solid transparent;
+  background-color: @primary_fixed;
+  color: @surface_container_lowest;
 }
 
 /* =====================================
@@ -137,87 +121,89 @@
    ===================================== */
 
 .control-center {
-  background: @surface-0;
-  border: 1px solid @outline-color;
+  background-color: @glass-bg;
+  border: 3px solid @outline;
 }
 
-/* Header / App bar */
+/* Header */
 .widget-title {
-  background: @surface-2;
-  color: @primary-color;
-  padding: 10px 12px;
-  margin: 8px;
-  border: 1px solid @outline-color;
+  background-color: @glass-bg-alt;
+  color: @primary_fixed;
+  padding: 12px;
+  margin: 10px;
+  border: 2px solid @outline_variant;
+  border-bottom: 5px solid @tertiary_fixed; /* MAGENTA STRIPE */
   font-size: 1.4rem;
 }
 
 .widget-title > button {
-  background: transparent;
-  border: 1px solid @outline-color;
-  color: @text-primary;
-  font-size: 1rem;
+  background-color: @glass-bg;
+  border: 2px solid @outline_variant;
+  color: @secondary_fixed;
 }
 
 .widget-title > button:hover {
-  background: @primary-color;
-  color: @surface-0;
+  background-color: @secondary_fixed;
+  color: @surface_container_lowest;
 }
 
 /* DND */
 .widget-dnd {
-  background: @surface-1;
-  border: 1px solid @outline-color;
-  padding: 8px 12px;
-  margin: 8px;
-  font-size: large;
-  color: @primary-color;
+  background-color: @glass-bg-alt;
+  border: 2px solid @outline_variant;
+  border-left: 5px solid @primary_fixed;
+  padding: 10px 14px;
+  margin: 10px;
+  color: @primary_fixed;
 }
 
 .widget-dnd > switch {
-  background: @primary-color;
+  background-color: @secondary_fixed;
 }
 
 .widget-dnd > switch:checked {
-  background: @error-color;
-  border: 1px solid @error-color;
+  background-color: @error;
+  border: 2px solid @error_container;
 }
 
 /* Labels */
 .widget-label > label {
   font-size: 1rem;
-  color: @text-primary;
+  color: @on_surface;
   margin: 10px;
 }
 
 /* =====================================
-   Buttons Grid (Material tiles)
+   Buttons Grid
    ===================================== */
 
 .widget-buttons-grid {
-  background: @surface-1;
-  border: 1px solid @outline-color;
-  padding: 6px;
-  margin: 0 8px 8px 8px;
-  font-size: x-large;
+  background-color: @glass-bg;
+  border: 3px solid @outline;
+  margin: 0 10px 10px 10px;
+  padding: 8px;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button {
-  background: @surface-0;
-  border: 1px solid @outline-color;
-  color: @text-primary;
-  margin: 4px;
-  padding: 6px 24px;
-  transition: background-color 0.12s ease-in-out;
+.widget-buttons-grid button {
+  background-color: @glass-bg-alt;
+  border: 2px solid @outline_variant;
+  color: @on_surface;
+  margin: 6px;
+  padding: 8px 26px;
+  transition: background-color 0.12s ease-in-out,
+              border-color 0.12s ease-in-out;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @primary-color;
-  color: @surface-0;
+.widget-buttons-grid button:hover {
+  background-color: @primary_fixed;
+  border-color: @primary;
+  color: @surface_container_lowest;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button:checked {
-  background: @secondary-color;
-  color: @surface-0;
+.widget-buttons-grid button:checked {
+  background-color: @tertiary_fixed;
+  border-color: @secondary_fixed;
+  color: @surface_container_lowest;
 }
 
 /* =====================================
@@ -226,12 +212,13 @@
 
 .widget-volume,
 .widget-backlight {
-  background: @surface-1;
-  border: 1px solid @outline-color;
-  padding: 8px;
-  margin: 8px;
+  background-color: @glass-bg-alt;
+  border: 2px solid @outline_variant;
+  border-left: 5px solid @secondary_fixed;
+  padding: 10px;
+  margin: 10px;
   font-size: 2rem;
-  color: @primary-color;
+  color: @primary_fixed;
 }
 
 /* =====================================
@@ -239,17 +226,11 @@
    ===================================== */
 
 .widget-mpris {
-  background: @surface-1;
-  border: 1px solid @outline-color;
-  margin: 0 8px 8px 8px;
-  color: @text-primary;
-}
-
-.widget-mpris > box > button,
-.widget-mpris-player,
-.widget-mpris-album-art {
-  margin: 10px;
-  box-shadow: none;
+  background-color: @glass-bg;
+  border: 3px solid @outline;
+  border-left: 5px solid @tertiary_fixed;
+  margin: 0 10px 10px 10px;
+  color: @on_surface;
 }
 
 picture.mpris-background {
