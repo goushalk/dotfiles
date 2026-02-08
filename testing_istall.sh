@@ -23,15 +23,6 @@ sanity_checkes() {
 		exit 1
 	fi
 
-	# Check is zsh is installed
-	if [ ! -d "$HOME/.oh-my-zsh" ]; then
-		echo "==> Installing Oh My Zsh"
-		export RUNZSH=no
-		export CHSH=no
-		export KEEP_ZSHRC=yes
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	fi
-
 	# Install yay if not installed
 	if ! command -v yay &>/dev/null; then
 		echo "==> Installing yay"
@@ -126,6 +117,18 @@ install_aur_packages() {
 		swayosd
 }
 
+install_zsh() {
+
+	# Check is zsh is installed
+	if [ ! -d "$HOME/.oh-my-zsh" ]; then
+		echo "==> Installing Oh My Zsh"
+		export RUNZSH=no
+		export CHSH=no
+		export KEEP_ZSHRC=yes
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	fi
+}
+
 clone_dotfiles() {
 	# Variables needs to be to changed to their fucntions
 
@@ -165,6 +168,7 @@ run_bootstrap() {
 	backup_existing_config
 	install_core_packages
 	install_aur_packages
+	install_zsh
 	clone_dotfiles
 	update_font_cache
 	install_done
