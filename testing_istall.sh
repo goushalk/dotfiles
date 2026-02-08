@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
+DOTFILES_REPO="https://github.com/goushalk/dotfiles.git"
+DOTFILES_DIR="$HOME/dotfiles"
+BACKUP_DIR="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
+
+inital_setupintro() {
+	set -e
+
+	echo "==> Hyprland full system bootstrap"
+	echo "==> Arch-based systems only"
+	echo
+}
 
 sanity_checkes() {
 	# Needs to be sudo
@@ -6,7 +17,7 @@ sanity_checkes() {
 		echo "[✗] sudo is required."
 		exit 1
 	fi
-	
+
 	# Check if pacman is installed
 	if ! command -v pacman &>/dev/null; then
 		echo "[✗] pacman not found. Arch-based systems only."
@@ -31,26 +42,21 @@ sanity_checkes() {
 		rm -rf /tmp/yay
 	fi
 
-	# Variables needs to be to changed to their fucntions
-	DOTFILES_REPO="https://github.com/goushalk/dotfiles.git"
-	DOTFILES_DIR="$HOME/dotfiles"
-
 }
 
 backup_existing_config() {
-	backup_dir="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
 	# Backup zhs
+	mkdir -p "$BACKUP_DIR"
 	echo "==> backing up existing zsh configs"
 	if [ -f "$HOME/.zshrc" ]; then
 		echo "  -> ~/.zshrc"
-		mv "$HOME/.zshrc" "$backup_dir/"
+		mv "$HOME/.zshrc" "$BACKUP_DIR/"
 	fi
 
 	echo "==> Backing up existing configs"
-	mkdir -p "$backup_dir"
 	if [ -d "$HOME/.config/" ]; then
-		echo " $HOME/.config/ -> $backup_dir"
-		mv "$HOME/.config/" "$backup_dir/"
+		echo " $HOME/.config/ -> $BACKUP_DIR"
+		mv "$HOME/.config/" "$BACKUP_DIR/"
 	fi
 }
 
@@ -105,7 +111,8 @@ install_core_packages() {
 
 install_aur_packages() {
 	echo "==> Installing AUR packages"
-	yay -S $YAY_FLAGS \
+	yay_flags="--noconfirm --needed --answerclean All --answerdiff None --removemake"
+	yay -S $yay_flags \
 		matugen-bin \
 		wlogout \
 		waypaper \
@@ -118,4 +125,32 @@ install_aur_packages() {
 		qt5-graphicaleffects \
 		fuzzel \
 		swayosd
+}
+
+clone_dotfiles() {
+	# Variables needs to be to changed to their fucntions
+
+	if [ ! -d "$DOTFILES_DIR" ]; then
+		echo "==> Cloning dotfiles repository"
+		git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+		echo "==> Stowing dotfiles"
+		cd "$DOTFILES_DIR"
+		stow */
+
+	else
+		echo "==> Dotfiles repo already exists, skipping clone"
+	fi
+
+}
+
+update_font_cache() {
+	echo "==> Updating font cache"
+	fc-cache -fv
+}
+
+install_done() {
+	echo
+	echo "==> Installation complete."
+	echo "==> Backups stored in: $BACKUP_DIR"
+	echo "==> Reboot recommended before starting Hyprland."
 }
