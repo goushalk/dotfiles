@@ -1,10 +1,13 @@
-
 [color]
 background = 'default'
+<<<<<<< HEAD
 foreground = '#8ad0ef'
+=======
+foreground = '#E5E5E7'
+>>>>>>> ab0a0e0ed29173775964f80a3f99dec53cb59eb9
 
-; gradient = 0
 gradient = 1
+<<<<<<< HEAD
 gradient_color_1 = '#004d63'
 gradient_color_2 = '#8ad0ef'
 gradient_color_3 = '#bce9ff'
@@ -17,3 +20,10 @@ horizontal_gradient_color_3 = '#bce9ff'
 horizontal_gradient_color_4 = '#8ad0ef'
 horizontal_gradient_color_5 = '#004d63'
 
+=======
+gradient_color_1 = '#D1D1D6'   # Silver Silk
+gradient_color_2 = '#FF4D4D'   # Sunset Tint
+gradient_color_3 = '#ED2939'   # Imperial Red
+
+horizontal_gradient = 0
+>>>>>>> ab0a0e0ed29173775964f80a3f99dec53cb59eb9

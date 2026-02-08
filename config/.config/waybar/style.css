@@ -1,112 +1,118 @@
 @import "colors.css";
- * {
-     border: none;
-     /* border-radius: 16px; */
-     font-family: "0xProto Nerd Font";
-     font-size: 17px;
-     min-height: 0;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "0xProto Nerd Font";
+    font-size: 16px;
+    min-height: 0;
 }
- window#waybar {
-     background: @background;
-     color: @on_surface;
-     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+window#waybar {
+    background: @background; /* bg */
+    color: @on_surface;
+    border-bottom: 4px solid @secondary;
 }
-/* Modules */
- #workspaces, 
- #window, 
- #clock, 
- #network, 
- #pulseaudio, 
- #bluetooth, 
- #battery, 
- #tray,
- #custom-notification,
- #custom-menu {
-     padding: 10px 12px;
-    /* margin: 6px 0;
-     */
-     transition: background 0.2s ease;
+
+/* MODULE BLOCKS */
+#workspaces,
+#window,
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#bluetooth,
+#tray,
+#custom-cpu,
+#custom-vpn,
+#custom-wlogout {
+    padding: 8px 12px;
+    transition: all 0.15s ease;
 }
-/* Hover */
-#clock:hover, 
-#network:hover, 
-#pulseaudio:hover, 
-#bluetooth:hover, 
+
+/* HOVER = TACTICAL FEEDBACK (Gruvbox style) */
+#clock:hover,
+#network:hover,
+#pulseaudio:hover,
 #battery:hover,
 #custom-cpu:hover,
+#custom-vpn:hover {
+    background: alpha(@primary, 0.18);
+}
+
+/* WORKSPACES */
+#workspaces button {
+    padding: 0 8px;
+    color: @on_surface_variant;
+}
+
+#workspaces button.active {
+    color: @primary;
+    background: alpha(@primary, 0.22);
+}
+
+#workspaces button:hover {
+    color: @on_surface;
+}
+
+/* WINDOW TITLE */
+#window {
+    color: @on_surface_variant;
+}
+
+/* CLOCK */
+#clock {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* NETWORK */
+#network {
+    color: @primary;
+    font-weight: bold;
+}
+
+#network.disconnected {
+    color: @outline;
+}
+
+/* CPU */
+#custom-cpu {
+    color: @secondary;
+    font-weight: bold;
+}
+
+/* VPN (Gruvbox aqua, not neon crime) */
+#custom-vpn {
+    color: @secondary_fixed;
+    font-weight: bold;
+}
+
+/* AUDIO */
+#pulseaudio.muted {
+    color: @outline;
+}
+
+/* BATTERY */
+#battery.warning {
+    color: @secondary;
+}
+
+#battery.critical {
+    color: @error;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.4; }
+}
+
+/* POWER */
+#custom-wlogout {
+    color: @error;
+    font-size: 18px;
+}
+
 #custom-wlogout:hover {
-     background: @surface_container_high;
+    background: alpha(@error, 0.25);
 }
-/* Workspaces */
- #workspaces button {
-     padding: 0 10px;
-     color: @on_surface_variant;
-}
- #workspaces button.active {
-     color: @primary;
-}
- #workspaces button:hover {
-     color: @on_surface;
-}
-/* Window title */
- #window {
-     color: @on_surface_variant;
-}
-/* Clock */
- #clock {
-     color: @primary;
-     font-weight: bold;
-}
-/* Network */
- #network {
-     color: @secondary;
-}
-/* Audio */
- #pulseaudio {
-     color: @primary;
-}
- #pulseaudio.muted {
-     color: @outline;
-}
-/* Bluetooth */
- #bluetooth {
-     color: @secondary;
-}
- #bluetooth.connected {
-     color: @primary;
-}
-/* Battery */
- #battery {
-     color: @primary;
-}
- #battery.warning {
-     color: @secondary;
-}
- #battery.critical {
-     color: @error;
-}
-
-#custom-cpu{
-    color: @secondary
-}
-/* Tray */
- #tray {
-     padding-right: 14px;
-}
-/* ================= POWER (WLOGOUT) ================= */
- #custom-wlogout {
-    /* margin-left: 20;
-     */
-     color: @primary;
-     font-size: 18px;
-}
- #custom-wlogout:hover {
-     color: @on_primary_container;
-}
-
-/* ================= Notification (swaync) ================= */
-#swaync {
-  padding: 10px 12px;
-  color: @primary;
-}
- 

@@ -105,6 +105,8 @@ yay -S $YAY_FLAGS \
   qt5-graphicaleffects \
   fuzzel \
   swayosd
+  gtk-engine-murrine \
+  thunar
 # -------------------- Backup existing configs --------------------
 echo "==> Backing up existing configs"
 mkdir -p "$BACKUP_DIR"
