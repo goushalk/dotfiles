@@ -4,7 +4,6 @@ DOTFILES_DIR="$HOME/dotfiles"
 BACKUP_DIR="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
 
 inital_setupintro() {
-	set -e
 
 	echo "==> Hyprland full system bootstrap"
 	echo "==> Arch-based systems only"
@@ -134,9 +133,11 @@ clone_dotfiles() {
 		echo "==> Cloning dotfiles repository"
 		git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
 		echo "==> Stowing dotfiles"
-		cd "$DOTFILES_DIR"
-		stow */
-
+		# This basically creates a subprocess so we don't have the current working dict to $DOTFILES_DIR
+		(
+			cd "$DOTFILES_DIR"
+			stow */
+		)
 	else
 		echo "==> Dotfiles repo already exists, skipping clone"
 	fi
@@ -154,3 +155,19 @@ install_done() {
 	echo "==> Backups stored in: $BACKUP_DIR"
 	echo "==> Reboot recommended before starting Hyprland."
 }
+
+run_bootstrap() {
+	# Stop execution if any single command fails
+	set -e
+
+	inital_setupintro
+	sanity_checkes
+	backup_existing_config
+	install_core_packages
+	install_aur_packages
+	clone_dotfiles
+	update_font_cache
+	install_done
+}
+
+run_bootstrap
