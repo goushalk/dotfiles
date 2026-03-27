@@ -32,7 +32,7 @@ export NVM_DIR="$HOME/.nvm"
 # Aliases
 # ================================
 alias c='clear'
-
+alias aoc='aoc -s $HOME/.config/.adventofcode.session'
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
@@ -43,7 +43,7 @@ alias lt='eza -a --tree --level=1 --icons=always'
 # alias pacpick='yay -Slq | fzf --multi --preview 'yay -Si {}' --height=80% --reverse | xargs -r yay -S --needed --noconfirm'
 alias shutdown='systemctl poweroff'
 
-alias v='$HOME/softwares/nvim-linux-x86_64.appimage'
+alias v='nvim'
 
 # tmux / sesh helper
 alias tsm='sesh connect $(sesh list -i -d | gum choose)'
@@ -154,3 +154,6 @@ autoload -U compinit && compinit
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

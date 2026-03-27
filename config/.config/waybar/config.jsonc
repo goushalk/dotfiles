@@ -29,15 +29,18 @@
     "battery"
   ],
 
-  "hyprland/workspaces": {
+"hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
+      "urgent": "",
+      "active": "", // focused workspace on current monitor 
+      "visible": "", // focused workspace on other monitors
       "default": "",
-      "active": ""
+      "empty": "" // persistent (created by this plugin)
     },
-    "persistent-workspaces": {
-      "*": 5
-    }
+    "on-scroll-up": "hyprctl dispatch split-cycleworkspaces -1",
+    "on-scroll-down": "hyprctl dispatch split-cycleworkspaces +1",
+    "all-outputs": false // recommended
   },
 
   "hyprland/window": {
@@ -87,7 +90,7 @@
   "on-click": "~/.config/scripts/power-profile",
   "states": {
     "warning": 30,
-    "critical": 15
+    "critical": 25
   }
 },
 
