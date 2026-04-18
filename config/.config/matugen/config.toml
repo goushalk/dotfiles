@@ -53,3 +53,9 @@ input_path = './templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/matugen'
 post_hook = 'pkill -USR1 cava'
 
+[templates.nwg-dock-hyprland]
+input_path = './templates/waybar.css'
+output_path = '~/.config/nwg-dock-hyprland/colors.css'
+post_hook = 'pkill -USR1 nwg-dock-hyprland'
+
+
